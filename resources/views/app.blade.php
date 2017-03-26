@@ -13,6 +13,8 @@
 
     @include('include.form')
 
+    @include('include.grid')
+
 </div>
 
 @include('include.noty')

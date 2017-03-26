@@ -26,6 +26,27 @@ label {
     float: right;
 }
 
+.grid {
+    padding-top: 30px;
+}
+
+.image {
+    margin-top: 20px;
+}
+
+.image img {
+    width: 100%;
+}
+
+.image-title {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.noty .modal-content {
+    padding: 15px;
+}
+
 @media screen and (max-width: 767px) {
     .random  {
         float: none;
