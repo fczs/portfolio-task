@@ -1,0 +1,39 @@
+.container {
+    background: #fff;
+    border: 2px solid #eee;
+}
+
+.header {
+    padding-top: 30px;
+}
+
+.form-control {
+    width: 320px;
+    display: inline-block;
+    height: auto;
+}
+
+label {
+    font-weight: 400;
+}
+
+.btn {
+    white-space: normal;
+    height: auto;
+}
+
+.random {
+    float: right;
+}
+
+@media screen and (max-width: 767px) {
+    .random  {
+        float: none;
+    }
+
+    .form-control {
+        width: 100%;
+        display: inline-block;
+        height: auto;
+    }
+}
