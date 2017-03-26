@@ -17,6 +17,7 @@
 
 </div>
 
+@include('include.modal')
 @include('include.noty')
 
 <script type="text/javascript" src="js/app.js"></script>

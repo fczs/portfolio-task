@@ -8,7 +8,6 @@
 /routes
 !/routes/web.php
 /storage
-/database
 /config
 !/config/app.php
 .env

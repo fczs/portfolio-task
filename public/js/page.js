@@ -1,6 +1,7 @@
 $(function () {
     var fileValid = false, //we won't post request if file is invalid
         pageNumber = 1, //page numbers for the infinite scroll
+        shiftPage = 0, //shift number of images to search in scroll method of ImagesController to avoid images duplication
         $title = $('[name="title"]'),
         $inputFile = $('input[type=file]');
 
@@ -49,6 +50,9 @@ $(function () {
                     //Clear values
                     $title.val('');
                     $form.find('label').text('Выберите изображение');
+
+                    //increase shift
+                    shiftPage++;
                 }
             });
         } else {
@@ -63,18 +67,32 @@ $(function () {
     $(window).on('scroll', function () {
         if($(this).scrollTop() + $(window).height() == $(document).height()) {
 
-            $.get('/scroll', {page: pageNumber}, function(response) {
+            $.get('/scroll', {page: pageNumber, shift: shiftPage}, function(response) {
                 if (response != "-1") {
                     $.each(response, function(index, value) {
                         //add image with response data to the bottom of the grid
                         $('.grid').append('<div class="image col-xs-6 col-md-4 col-lg-3"><img src="'+ value.url +'"><div class="image-title">' + value.title + '</div></div>');
-                        //increase page number
-                        pageNumber++;
                     });
+                    //increase page number
+                    pageNumber++;
                 } else {
                     console.log("That's all folks");
                 }
             });
         }
+    });
+
+    //get random image and show it in modal
+    $('.random').on('click', function() {
+        
+        $.get('/random', function(response) {
+            if (response.status == "ok") {
+                //clear previous image and add a new one to modal dialog
+                $('.modal-random .modal-content').html('').append('<img src="'+ response.url +'">');
+                $('.modal-random').modal("show");
+            } else {
+                console.log(response.status);
+            }
+        });
     });
 });

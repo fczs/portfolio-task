@@ -11,7 +11,7 @@ class ImagesController extends Controller
 {
 
     /**
-     * Gets $num image rows with $offset from db
+     * Gets $num images with $offset from db
      *
      * @param number $offset
      * @param number $num
@@ -49,11 +49,10 @@ class ImagesController extends Controller
         Image::create(['title' => $title, 'url' => $url]);
 
         return ["title" => $title, "url" => $url];
-        
     }
 
     /**
-     * Gets new images on window scrolling
+     * Gets new images on window scrolling, shift search if images were added in current session
      *
      * @param Request $request
      *
@@ -64,9 +63,31 @@ class ImagesController extends Controller
         $num = config('app.scrollingPages');
         $offset = $num + $num * $request["page"];
         if ($offset < Image::count()) {
-            return $this->getImages($offset, $num);
+            return $this->getImages($offset + $request["shift"], $num);
         } else {
             return "-1";
+        }
+    }
+
+    /**
+     * Gets random image
+     *
+     * @return object
+     */
+    public function random()
+    {
+        $imageNum = rand(0, Image::count() - 1);
+        $image = $this->getImages($imageNum, 1);
+
+        $url = "";
+        foreach ($image as $i) {
+            $url = $i["url"];
+        }
+
+        if ($url != "") {
+            return response()->json(["url" => $url, "status" => "ok"]);
+        } else {
+            return response()->json(["status" => "error"]);
         }
     }
 }

@@ -16,3 +16,5 @@ Route::get('/', 'ImagesController@show');
 Route::post('/store', 'ImagesController@store');
 
 Route::get('/scroll', 'ImagesController@scroll');
+
+Route::get('/random', 'ImagesController@random');

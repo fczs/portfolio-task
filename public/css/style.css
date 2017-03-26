@@ -47,6 +47,18 @@ label {
     padding: 15px;
 }
 
+.modal-random .modal-content {
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.modal-random .modal-content img {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
 @media screen and (max-width: 767px) {
     .random  {
         float: none;
