@@ -16,6 +16,12 @@ class ImagesController extends Controller
 
     public function store(Request $request)
     {
-        return "0";
+        $title = htmlspecialchars($request["title"]);
+        $url = '/images/' . uniqid() . '_' . basename($_FILES["image"]["name"]);
+
+        File::move($_FILES["image"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . $url);
+        Image::create(['title' => $title, 'url' => $url]);
+
+        return response()->json(["title" => $title, "url" => $url]);
     }
 }
