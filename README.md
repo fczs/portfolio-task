@@ -1,2 +1,2 @@
-+# portfolio-task
-+Creating a simple photography portfolio using laravel 5.3
+# portfolio-task
+Creating a simple photography portfolio using laravel 5.3
