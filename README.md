@@ -18,4 +18,3 @@ Create a simple photography portfolio:
 6) Add button "Show me a random image"
 
 [Working sample](http://35.157.146.128/)
-
