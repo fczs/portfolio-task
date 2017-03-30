@@ -45,7 +45,7 @@ $(function () {
                 processData: false,
                 success: function(response) {
                     //add image with response data to the top of the grid
-                    $('.grid').prepend('<div class="image col-xs-6 col-md-4 col-lg-3"><img src="'+ response.url +'"><div class="image-title">' + response.title + '</div></div>');
+                    $('.grid').prepend('<div class="image col-xs-6 col-md-4 col-lg-3"><div class="image-wrapper"><img src="'+ response.url +'"></div><div class="image-title">' + response.title + '</div></div>');
 
                     //Clear values
                     $title.val('');
@@ -71,7 +71,7 @@ $(function () {
                 if (response != "-1") {
                     $.each(response, function(index, value) {
                         //add image with response data to the bottom of the grid
-                        $('.grid').append('<div class="image col-xs-6 col-md-4 col-lg-3"><img src="'+ value.url +'"><div class="image-title">' + value.title + '</div></div>');
+                        $('.grid').append('<div class="image col-xs-6 col-md-4 col-lg-3"><div class="image-wrapper"><img src="'+ value.url +'"></div><div class="image-title">' + value.title + '</div></div>');
                     });
                     //increase page number
                     pageNumber++;

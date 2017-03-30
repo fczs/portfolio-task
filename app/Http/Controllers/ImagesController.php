@@ -26,6 +26,7 @@ class ImagesController extends Controller
     /**
      * Shows main page with number of images in a grid
      *
+     * @return object
      */
     public function show()
     {
@@ -60,8 +61,9 @@ class ImagesController extends Controller
      */
     public function scroll(Request $request)
     {
+        $firstPage = config('app.firstPage');
         $num = config('app.scrollingPages');
-        $offset = $num + $num * $request["page"];
+        $offset = $firstPage - $num + $request["page"] * $num;
         if ($offset < Image::count()) {
             return $this->getImages($offset + $request["shift"], $num);
         } else {
