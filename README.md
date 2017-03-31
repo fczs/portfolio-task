@@ -17,4 +17,4 @@ Create a simple photography portfolio:
 5) Create an infinite scroll: stored images should be shown on scrolling down the page
 6) Add button "Show me a random image"
 
-[Working sample](http://35.157.146.128/)
+[Working sample](http://ivankuzin.ru/portfolio/)
